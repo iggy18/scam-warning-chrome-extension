@@ -1,0 +1,13 @@
+{
+    "name":"Scam Alert",
+    "version": "1.0",
+    "manifest_version":2,
+    "content_scripts": [
+        {
+            "matches":["https://anydesk.com/en",
+            "https://www.teamviewer.com/en-us/",
+            "https://www.connectwise.com/", ""],
+            "js":["content.js"]
+        }
+    ]
+}
