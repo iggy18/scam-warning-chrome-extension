@@ -7,22 +7,23 @@ function warnUser(){
     document.body.appendChild(warningBox)
 
     warningBox.addEventListener('click',()=> {
-        
-        let clickCounter = 30
+        document.body.removeChild(warningBox)
+        let clickCounter = 15
         const warningMessage = toDOM(`
             <section id="warning-message">
-                <h1>!!STOP!!</h1>
-                <h2>NEVER LOG INTO YOUR BANK ACOUNT WHILE USING REMOTE ACCESS SOFTWARE</h2>
-                <h1>NEVER!</h1>
-                <h3>if you find yourself in ANY of the following situations while using the remote access software you've been asked to download, hang up the phone. you could become the victim of a scam. call a tech-savy friend or family member and explain to them what is happening to you.</h3>
-                <h4>... you have been instructed to ignore this message</h4>
-                <h4>... you have been informed you're due for a refund from tech support</h4>
-                <h4>... you are asked to log into a bank account while using this software</h4>
-                <h4>... you recive a refund but the amount refunded is "accidentaly" too much</h4>
-                <h4>... you are asked to pay back the extra refunded amount</h4>
-                <h4>... you are asked to purchase gift cards for payment or mail cash</h4>
+                <h1>STOP</h1>
+                <h1>NEVER LOG INTO YOUR BANK ACOUNT OR EMAIL</h1> 
+                <h1>WHILE USING REMOTE ACCESS SOFTWARE</h1>
+                <h1>NEVER...</h1>
+                <h3>Proceed with caution. </h3>
+                <h4>hang up the phone if you have been instructed to ignore this message</h4>
+                <h4>hang up the phone if you have been informed you're due for a refund from tech support</h4>
+                <h4>hang up the phone you are asked to log into a bank account while using this software</h4>
+                <h4>hang up the phone if you recive a refund but the amount refunded is "accidentaly" too much</h4>
+                <h4> hang up the phone if you are asked to pay back the extra refunded amount</h4>
+                <h4>hang up the phone if you are asked to purchase gift cards for payment or mail cash</h4>
 
-                <p>to clear this warning you have to click and hold for <span class="time-left">${clickCounter}</span> seconds.</p>
+                <p>to clear this warning you have to click anywhere and wait for <span class="time-left">${clickCounter}</span> seconds.</p>
             </section>
         `)
         document.body.appendChild(warningMessage)
