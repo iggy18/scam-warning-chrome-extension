@@ -1,8 +1,0 @@
-alert("DO NOT IGNORE THE FOLLOWING POPUP")
-alert("!!!!!!!PAY ATTENTION!!!!!!")
-alert("DO NOT IGNORE THE FOLLOWING POPUP")
-alert("IF YOU ARE ON THE PHONE WITH TECH SUPPORT, AMAZON, MICROSOFT, ETC...")
-alert("IF YOU ARE ON THE PHONE WITH THE IRS...")
-alert("if at any moment you are ASKED TO PURCHASE GIFT CARDS")
-alert("PLEASE KNOW THAT NO ORGANIZATION ACCEPTS GIFT CARDS AS PAYMENT")
-alert("failure to pay attention to these popups can result in you BECOMING THE VICTIM OF A SCAM.")

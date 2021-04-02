@@ -1,0 +1,75 @@
+/* 
+* {
+    box-sizing: border-box;
+    color: #fff;
+    font-family: monospace;
+    font-size: 3vw;
+    font-weight: bold;
+    text-align: center;
+}
+
+html {
+    background: radial-gradient(68.34% 50% at 50% 50%, #fffb2d 0%, #e8c941 0%, #ff2d2d 100%);
+    height: 100vh;
+    padding: 50px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+html::before {
+    content: '!! Stop !! if you are on the phone with tech support';
+}
+
+body {
+    display: none !important;
+}
+
+#Warning{
+    font-size: 6vw;
+} */
+
+.warning-container {
+    z-index: 100;
+    position: fixed;
+    width: 100vw;
+    height: 50px;
+    top: calc(100vh - 100px);
+    background: red;
+    color: white;
+    border-top: 1px solid black;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.disable-dedistract .warning-container {
+    display: none;
+}
+
+#warning-message {
+    z-index: 9;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0vh;
+    left: 0vw;
+    background: red;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+}
+#warningMessage > div {
+    display: block;
+}
+.disable-dedistract .warning-container {
+    display: none;
+}
