@@ -1,7 +1,21 @@
-function warnUser(){
+function saveTheDate(){
+  date = Date.now()
+  localStorage.setItem('lastseen', date)
+}
+
+function warningHasBeenSeenInLastTwoHours(){
+  lastVisit = localStorage.getItem('lastseen');
+  if(lastVisit <= lastVisit + 7200000){
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function warnUserPopUp(){
     const warningBox = toDOM(`
     <section class="warning-container">
-        <strong>If you can see this bar it's because you're on a website commonly used in scams. click here to prevent yourself from being scamed.</strong>
+        <strong>Your Scam Informer Chrome extension would like you to take a moment and learn about common scam tactics. This site is sometimes utilized in tech support and refund scams. Click this box to learn more.</strong>
     </section>
     `);
     document.body.appendChild(warningBox)
@@ -13,17 +27,21 @@ function warnUser(){
             <section id="warning-message">
                 <h1>STOP</h1>
                 <h1>NEVER LOG INTO YOUR BANK ACOUNT OR EMAIL</h1> 
-                <h1>WHILE USING REMOTE ACCESS SOFTWARE</h1>
+                <h1>WHILE USING REMOTE ACCESS SOFTWARE.</h1>
                 <h1>NEVER...</h1>
-                <h3>Proceed with caution. </h3>
-                <h4>hang up the phone if you have been instructed to ignore this message</h4>
-                <h4>hang up the phone if you have been informed you're due for a refund from tech support</h4>
-                <h4>hang up the phone you are asked to log into a bank account while using this software</h4>
-                <h4>hang up the phone if you recive a refund but the amount refunded is "accidentaly" too much</h4>
-                <h4> hang up the phone if you are asked to pay back the extra refunded amount</h4>
-                <h4>hang up the phone if you are asked to purchase gift cards for payment or mail cash</h4>
+                <h3>Never trust a call you weren't expecting.</h3>
+                <h4>If any of the following applies to you, hang up the phone. call a tech savy friend or family member and tell them what is happening to you.</h4>
+                <h4>Hang up the phone if you have been instructed to ignore this message.</h4>
+                <h4>Hang up the phone if you have been informed you're due for a refund from tech support.</h4>
+                <h4>Hang up the phone if you called a number from a popup on your computer claiming something is wrong with you computer.</h4>
+                <h4><strong>Hang up the phone if you are asked to log into a bank account while using this software.</strong></h4>
+                <h4>Hang up the phone if you recive a refund but the amount refunded is "accidentaly" too much. this is how the scam works.</h4>
+                <h4>Hang up the phone if you are asked to pay back the extra refunded amount.</h4>
+                <h4><strong>Hang up the phone if you are asked to purchase gift cards for payment or mail cash.</strong></h4>
 
-                <p>to clear this warning you have to click anywhere and wait for <span class="time-left">${clickCounter}</span> seconds.</p>
+                <h4>Learn more on about common scam tactics at the <a href="https://www.consumer.ftc.gov/articles/how-avoid-scam" target="_blank" rel="noopener noreferrer">Federal Trade Commission website</a></h4>
+
+                <p>To clear this warning you have to click anywhere and wait for <span class="time-left">${clickCounter}</span> seconds.</p>
             </section>
         `)
         document.body.appendChild(warningMessage)
@@ -34,6 +52,7 @@ function warnUser(){
                 const timeLeft = clickCounter - (+new Date() - start) / 1000;
                 if(timeLeft < 0 ){
                     setEnabled(false)
+                    saveTheDate()
                     document.body.removeChild(warningMessage)
                     clearInterval(interval)
                 } else {
@@ -47,7 +66,15 @@ function warnUser(){
     })
 }
 
-warnUser()
+function checkIfWarningAlreadySeen(){
+  if (warningHasBeenSeenInLastTwoHours() === true){
+    console.log('Warning already seen')
+  } else {
+    warnUserPopUp()
+  }
+}
+
+checkIfWarningAlreadySeen()
 
 function addPathChangeListener(callback) {
     let lastPathName = null
@@ -61,14 +88,12 @@ function addPathChangeListener(callback) {
     }
 
 checkURL()
-
-
-  let frameRequest = null
-  function beginPolling() {
-    const start = +new Date()
-    if (frameRequest != null) {
-      return
-    }
+    let frameRequest = null
+    function beginPolling() {
+      const start = +new Date()
+      if (frameRequest != null) {
+        return
+      }
 
     ;(function poll() {
       checkURL()
@@ -93,16 +118,6 @@ function setEnabled(enabled) {
   } else {
     document.body.classList.add(disableClassName)
   }
-}
-
-function enableFeedOnPathsOtherThan(blockedPaths) {
-  addPathChangeListener((path) => {
-    if (blockedPaths.includes(path)) {
-      setEnabled(true)
-    } else {
-      setEnabled(false)
-    }
-  })
 }
 
 function toDOM(str) {

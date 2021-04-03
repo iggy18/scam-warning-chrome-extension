@@ -1,8 +1,11 @@
 {
-    "name":"Scam Alert",
+    "name":"Scam Stopper",
     "version": "1.0",
     "manifest_version":2,
     "description":"warns potential victims about scams that use legitimate remote viewing software",
+    "icons": {
+        "48": "images/logo48.png",
+        "128": "images/logo128.png" },
     "content_scripts": [
         {
             "matches":["https://www.teamviewer.com/en-us/*", "https://anydesk.com/*",
