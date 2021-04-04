@@ -26,23 +26,23 @@ function warnUserPopUp() {
     let clickCounter = 15
     const warningMessage = toDOM(`
             <section id="warning-message">
-                <aside id="bigger" >STOP</aside>
-                <aside id="alert">NEVER LOG INTO YOUR BANK, EMAIL, OR AMAZON ACCOUNT</aside> 
-                <aside id="alert">WHILE USING REMOTE ACCESS SOFTWARE.</aside>
-                <aside id="alert">NEVER...</aside>
-                <aside id="alert">Never trust a call you weren't expecting.</aside>
-                <aside id="bigger">Below are common scam tactics used in remote scams. Is any of this happening to you?</aside>
-                <aside id="alert">You have been instructed to ignore this message. You're speaking to a scammer.</aside>
-                <aside id="alert">You have been informed you're due for a refund from tech support. This is a scam.</aside>
-                <aside id="alert">You called a number from a popup on your computer claiming something is wrong with you computer. This is a scam.</aside>
-                <aside id="alert">Someone called you claiming your computer or account has been hacked. This is a scam.</aside>
-                <aside id="alert">You are asked to log into a bank account while using remote access software. This is a scam.</aside>
-                <aside id="alert">You recive a refund but the amount refunded is "accidentaly" too much. This is a scam.</aside>
-                <aside id="alert">You are asked to pay back the extra refunded amount. This is a scam.</aside>
-                <aside id="alert">You are asked to purchase gift cards for payment or mail cash. This is a scam.</aside>
-                <aside id="bigger">if you are ever asked to purchase gift cards for payment you're being scammed.</aside>
-                <aside id="alert">Learn more on about common scam tactics at the <a href="https://www.consumer.ftc.gov/articles/how-spot-avoid-and-report-tech-support-scams" target="_blank" rel="noopener noreferrer">Federal Trade Commission website</a></aside>
-                <aside id="alert">To clear this warning you have to click anywhere and wait for <span class="time-left">${clickCounter}</span> seconds.</aside>
+                <h6 id="bigger" >STOP</h6>
+                <h6 id="alert">NEVER LOG INTO YOUR BANK, EMAIL, OR AMAZON ACCOUNT</h6> 
+                <h6 id="alert">WHILE USING REMOTE ACCESS SOFTWARE.</h6>
+                <h6 id="alert">NEVER...</h6>
+                <h6 id="alert">Never trust a call you weren't expecting.</h6>
+                <h6 id="bigger">Below are common scam tactics used in remote scams. Is any of this happening to you?</h6>
+                <h6 id="alert">You have been instructed to ignore this message. You're speaking to a scammer.</h6>
+                <h6 id="alert">You have been informed you're due for a refund from tech support. This is a scam.</h6>
+                <h6 id="alert">You called a number from a popup on your computer claiming something is wrong with you computer. This is a scam.</h6>
+                <h6 id="alert">Someone called you claiming your computer or account has been hacked. This is a scam.</h6>
+                <h6 id="alert">You are asked to log into a bank account while using remote access software. This is a scam.</h6>
+                <h6 id="alert">You recive a refund but the amount refunded is "accidentaly" too much. This is a scam.</h6>
+                <h6 id="alert">You are asked to pay back the extra refunded amount. This is a scam.</h6>
+                <h6 id="alert">You are asked to purchase gift cards for payment or mail cash. This is a scam.</h6>
+                <h6 id="bigger">if you are ever asked to purchase gift cards for payment you're being scammed.</h6>
+                <h6 id="alert">Learn more on about common scam tactics at the <a href="https://www.consumer.ftc.gov/articles/how-spot-avoid-and-report-tech-support-scams" target="_blank" rel="noopener noreferrer">Federal Trade Commission website</a></h6>
+                <h6 id="alert">To clear this warning you have to click anywhere and wait for <span class="time-left">${clickCounter}</span> seconds.</h6>
             </section>
         `)
     document.body.appendChild(warningMessage)

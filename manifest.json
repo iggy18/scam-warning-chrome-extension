@@ -12,6 +12,11 @@
             "https://www.connectwise.com/*"],
             "js":["warning.js"],
             "css":["styles.css"]
+        },
+        {
+            "matches":["https://www.remotepc.com/*", "https://www.logmein.com/*", "https://www.splashtop.com/*"],
+            "js":["warning-alt.js"],
+            "css":["styles.css"]
         }
     ]
 }

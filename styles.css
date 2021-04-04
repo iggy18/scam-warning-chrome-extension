@@ -1,5 +1,5 @@
 #warning-container {
-    z-index: 99 !important;
+    z-index: 9999999 !important;
     text-align: center;
     position: fixed;
     width: 50%;
@@ -30,12 +30,19 @@
     color: white !important;
 }
 
+#bigger{
+    font-size:2vw;
+    margin: 5px;
+    font-weight: bold;
+    color: white !important;
+}
+
 .disable-dedistract #warning-container {
     display: none;
 }
 
 #warning-message {
-    z-index: 99 !important;
+    z-index: 9999999 !important;
     position: fixed;
     top: 0;
     left: 0;
