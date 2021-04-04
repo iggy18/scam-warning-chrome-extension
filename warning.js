@@ -4,8 +4,9 @@ function saveTheDate(){
 }
 
 function warningHasBeenSeenInLastTwoHours(){
-  lastVisit = localStorage.getItem('lastseen');
-  if(lastVisit <= lastVisit + 7200000){
+  now = Date.now()
+  lastVisitTimer = parseInt(localStorage.getItem('lastseen')) + 7200000
+  if(now <= lastVisitTimer){
     return true;
   } else {
     return false;
@@ -14,8 +15,8 @@ function warningHasBeenSeenInLastTwoHours(){
 
 function warnUserPopUp(){
     const warningBox = toDOM(`
-    <section class="warning-container">
-        <strong>Your Scam Informer Chrome extension would like you to take a moment and learn about common scam tactics. This site is sometimes utilized in tech support and refund scams. Click this box to learn more.</strong>
+    <section id="warning-container">
+        <strong>Your Scam Stopper Chrome extension would like you to take a moment and learn about common scam tactics. This site is sometimes utilized in tech support and refund scams. Click this box to learn more.</strong>
     </section>
     `);
     document.body.appendChild(warningBox)
@@ -24,25 +25,26 @@ function warnUserPopUp(){
         document.body.removeChild(warningBox)
         let clickCounter = 15
         const warningMessage = toDOM(`
-            <section id="warning-message">
-                <h1>STOP</h1>
-                <h1>NEVER LOG INTO YOUR BANK ACOUNT OR EMAIL</h1> 
-                <h1>WHILE USING REMOTE ACCESS SOFTWARE.</h1>
-                <h1>NEVER...</h1>
-                <h3>Never trust a call you weren't expecting.</h3>
-                <h4>If any of the following applies to you, hang up the phone. call a tech savy friend or family member and tell them what is happening to you.</h4>
-                <h4>Hang up the phone if you have been instructed to ignore this message.</h4>
-                <h4>Hang up the phone if you have been informed you're due for a refund from tech support.</h4>
-                <h4>Hang up the phone if you called a number from a popup on your computer claiming something is wrong with you computer.</h4>
-                <h4><strong>Hang up the phone if you are asked to log into a bank account while using this software.</strong></h4>
-                <h4>Hang up the phone if you recive a refund but the amount refunded is "accidentaly" too much. this is how the scam works.</h4>
-                <h4>Hang up the phone if you are asked to pay back the extra refunded amount.</h4>
-                <h4><strong>Hang up the phone if you are asked to purchase gift cards for payment or mail cash.</strong></h4>
+            <div id="warning-message">
+                <h1 id="alert" >STOP</h1>
+                <h1 id="alert">NEVER LOG INTO YOUR BANK ACOUNT OR EMAIL</h1> 
+                <h1 id="alert">WHILE USING REMOTE ACCESS SOFTWARE.</h1>
+                <h1 id="alert">NEVER...</h1>
+                <h3 id="alert">Never trust a call you weren't expecting.</h3>
+                <h4 id="alert">If any of the following applies to you, hang up the phone. call a tech savy friend or family member and tell them what is happening to you.</h4>
+                <h4 id="alert">Hang up the phone if you have been instructed to ignore this message.</h4>
+                <h4 id="alert">Hang up the phone if you have been informed you're due for a refund from tech support.</h4>
+                <h4 id="alert">Hang up the phone if you called a number from a popup on your computer claiming something is wrong with you computer.</h4>
+                <h4 id="alert"><strong>Hang up the phone if you are asked to log into a bank account while using this software.</strong></h4>
+                <h4 id="alert">Hang up the phone if you recive a refund but the amount refunded is "accidentaly" too much. this is how the scam works.</h4>
+                <h4 id="alert">Hang up the phone if you are asked to pay back the extra refunded amount.</h4>
 
-                <h4>Learn more on about common scam tactics at the <a href="https://www.consumer.ftc.gov/articles/how-avoid-scam" target="_blank" rel="noopener noreferrer">Federal Trade Commission website</a></h4>
+                <h4 id="alert"><strong>Hang up the phone if you are asked to purchase gift cards for payment or mail cash.</strong></h4>
 
-                <p>To clear this warning you have to click anywhere and wait for <span class="time-left">${clickCounter}</span> seconds.</p>
-            </section>
+                <h4 id="alert">Learn more on about common scam tactics at the <a href="https://www.consumer.ftc.gov/articles/how-avoid-scam" target="_blank" rel="noopener noreferrer">Federal Trade Commission website</a></h4>
+
+                <p id="alert">To clear this warning you have to click anywhere and wait for <span class="time-left">${clickCounter}</span> seconds.</p>
+            </div>
         `)
         document.body.appendChild(warningMessage)
         let interval = null;
@@ -70,6 +72,7 @@ function checkIfWarningAlreadySeen(){
   if (warningHasBeenSeenInLastTwoHours() === true){
     console.log('Warning already seen')
   } else {
+    window.localStorage.removeItem('lastseen');
     warnUserPopUp()
   }
 }
